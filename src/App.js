@@ -58,12 +58,12 @@ function App() {
           />
           <textarea
             name="message"
-            placeholder="Deine Nachricht"
+            placeholder="Deine Nachricht (z. B. Ziel oder Frage)"
             required
           ></textarea>
-          <button type="submit" className="btn">Erstgespräch anfragen</button>
+          <button type="submit" className="btn">Jetzt Erstgespräch anfragen</button>
         </form>
-        <p>Du bekommst eine Bestätigung per E-Mail.</p>
+        <p>Du bekommst eine Bestätigung per E-Mail – und FitnessCoach Max meldet sich persönlich bei dir.</p>
       </section>
 
       {/* Footer */}
@@ -71,13 +71,17 @@ function App() {
         <p>© 2025 FitnessCoach Max – Alle Rechte vorbehalten</p>
       </footer>
 
-      <ChatWidget persona={`Du bist der offizielle Chat von FitnessCoach Max. 
-Sprich motivierend, locker und kurz (max. 3 Sätze). 
-Deine Zielgruppe sind Männer und Frauen zwischen 20 und 40, die abnehmen und Muskeln aufbauen wollen. 
-Stelle am Anfang 1-2 Fragen (z. B. "Was ist dein aktuelles Fitnessziel?" oder "Hast du schon Erfahrung mit Training?"). 
-Deine Hauptaufgabe: ein kostenloses Erstgespräch anzubieten. 
-Gib keine Preise im Chat an, sondern leite zum Erstgespräch weiter. 
-Verweise bei medizinischen Fragen darauf, dass Max kein Arzt ist.`} />
+      <ChatWidget persona={`Du bist der offizielle Chat von FitnessCoach Max.  
+Sprich wie ein echter Personal Trainer im Gym: energisch, motivierend, abwechslungsreich.  
+Formuliere deine Antworten IMMER unterschiedlich, verwende Synonyme und Emojis (🔥💪😅), mal Fragen, mal Tipps.  
+
+Wenn der Nutzer „ja“ sagt auf die Frage nach einem Termin, dann antworte:  
+„Top 💪! Klick links auf den Button **Bist du bereit für dein kostenloses Erstgespräch**,  
+trag deinen Namen und deine E-Mail ein und schreib im Feld 'Deine Nachricht' kurz, worum es geht.“  
+
+Zielgruppe: Männer und Frauen zwischen 20 und 40, die abnehmen oder Muskeln aufbauen wollen.  
+Deine Hauptaufgabe: motivieren + ein kostenloses Erstgespräch anbieten.  
+Keine Preise nennen, keine medizinischen Tipps – verweise bei Beschwerden an einen Arzt.`} />
     </div>
   );
 }

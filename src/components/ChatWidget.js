@@ -20,6 +20,8 @@ export default function ChatWidget({ persona }) {
     if (e) e.preventDefault();
     const text = input.trim();
     if (!text) return;
+
+    // Nutzer-Nachricht hinzufügen
     const userMsg = { from: "user", text };
     setMessages(prev => [...prev, userMsg]);
     setInput("");
@@ -29,13 +31,18 @@ export default function ChatWidget({ persona }) {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, persona })
+        body: JSON.stringify({ 
+          message: text, 
+          persona,
+          settings: { temperature: 0.8 } // <-- sorgt für abwechslungsreichere Antworten
+        })
       });
+
       const data = await res.json();
+
       if (res.ok) {
         setMessages(prev => [...prev, { from: "bot", text: data.reply }]);
         if (data.needsHuman) {
-          // Hinweis: Backend hat erkannt, dass eine Eskalation nötig ist
           setMessages(prev => [...prev, { from: "bot", text: "⚠️ Ich habe das an das Team gemeldet. Ein Mensch wird sich melden." }]);
         }
       } else {
@@ -88,7 +95,7 @@ export default function ChatWidget({ persona }) {
   );
 }
 
-// --- Styles (inline to keep es simple) ---
+// --- Styles ---
 const toggleButtonStyle = {
   background: "#007bff", color: "white", border: "none", padding: "10px 14px", borderRadius: 8, cursor: "pointer"
 };
